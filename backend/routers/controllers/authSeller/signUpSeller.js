@@ -35,4 +35,17 @@ const createNewSeller = (req, res) => {
       res.json("Email already exist !");
     });
 };
-module.exports = { createNewSeller };
+const getSellers = (req, res) => {
+  sellerModel
+    .find({})
+    .then((result) => {
+      res.status(201)
+      res.json({ success: true, massage: "getAllSeller", result: result })
+    })
+    .catch((err) => {
+      res.status(500)
+      res.json({ success: false, massage: "nothing seller" })
+    });
+};
+
+module.exports = { createNewSeller,getSellers };
