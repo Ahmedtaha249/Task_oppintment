@@ -39,13 +39,35 @@ const getSellers = (req, res) => {
   sellerModel
     .find({})
     .then((result) => {
-      res.status(201)
-      res.json({ success: true, massage: "getAllSeller", result: result })
+      res.status(201);
+      res.json({ success: true, massage: "getAllSeller", result: result });
     })
     .catch((err) => {
-      res.status(500)
-      res.json({ success: false, massage: "nothing seller" })
+      res.status(500);
+      res.json({ success: false, massage: "nothing seller" });
     });
 };
 
-module.exports = { createNewSeller,getSellers };
+const searchFilterseller = (req, res) => {
+  const firstName = req.body.firstName || "";
+  const lastName = req.body.lastName || "";
+  const phone = req.body.phone || "";
+  sellerModel
+    .find({ firstName: firstName, lastName: lastName, phone: phone })
+    .then((result) => {
+      res.status(201);
+      res.json({ success: true, massage: "getAllSeller", result: result });
+    })
+    .catch((err) => {
+      res.status(500);
+      res.json({ success: false, massage: "nothing seller" });
+    });
+};
+
+
+
+
+
+
+
+module.exports = { createNewSeller, getSellers, searchFilterseller };
