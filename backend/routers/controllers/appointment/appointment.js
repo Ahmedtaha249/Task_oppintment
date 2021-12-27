@@ -74,12 +74,12 @@ const updateAppointmentById = (req, res) => {
       { new: true }
     )
     .then((result) => {
-      console.log(result);
+     
       res.status(200);
       res.json({
         success: true,
         message: "The updated appointment",
-        article: result,
+        result: result,
       });
     })
     .catch((err) => {
@@ -106,14 +106,62 @@ const deleteAppointmentById = (req, res) => {
     });
 };
 
+const accept = (req, res) => {
+  let _id = req.params.id;
 
+  appointmentModel.findById(_id, function (err, result) {
+    if (err) {
+      console.log(err);
+    }
 
+    if (result) {
+      let newStatus = result.status === 0 ? 1 : 0;
+      appointmentModel
+        .findOneAndUpdate({ _id: _id }, { status: newStatus }, { new: true })
+        .then((result) => {
+        
+          res.status(200);
+          res.json({
+            success: true,
+            message: "The accept appointment",
+            result: result,
+          });
+        })
+        .catch((err) => {
+          res.status(404);
+          res.json({ success: false, message: "The Appointment Not Found" });
+        });
+    }
+  });
+};
 
+const reject = (req, res) => {
+  let _id = req.params.id;
 
-
-
-
-
+  appointmentModel.findById(_id, function (err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      let newStatus = result.status === 0 ? 2 : 0;
+      appointmentModel
+        .findOneAndUpdate({ _id: _id }, { status: newStatus }, { new: true })
+        .then((result) => {
+         
+          res.status(200);
+          res.json({
+            success: true,
+            message: "The reject appointment",
+            result: result,
+          });
+        })
+        .catch((err) => {
+          res.status(404);
+          res.json({ success: false, message: "The Appointment Not Found" });
+        });
+    }
+  });
+};
 
 module.exports = {
   createNewAppointment,
@@ -121,4 +169,6 @@ module.exports = {
   getAppointmentById,
   updateAppointmentById,
   deleteAppointmentById,
+  accept,
+  reject,
 };

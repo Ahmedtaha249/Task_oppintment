@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const sellers= new mongoose.Schema({
   firstName: { type: String },
   lastName: { type: String },
-  is_Available:{ type:Number,default:1} ,
+  
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   description:{type:String},

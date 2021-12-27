@@ -4,7 +4,7 @@ const createNewSeller = (req, res) => {
   const {
     firstName,
     lastName,
-    is_Available,
+  
     email,
     password,
     description,
@@ -14,7 +14,7 @@ const createNewSeller = (req, res) => {
   const newSeller = new sellerModel({
     firstName,
     lastName,
-    is_Available,
+ 
     email,
     password,
     description,
