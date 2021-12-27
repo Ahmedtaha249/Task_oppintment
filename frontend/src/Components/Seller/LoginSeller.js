@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 
 import axios from "axios";
-
+import "./loginSeller.css"
 import { infor } from "../../App";
 
 const LoginSeller = () => {
@@ -13,6 +13,7 @@ const LoginSeller = () => {
     axios
       .post("http://localhost:5000/loginSeller", { email, password })
       .then((result) => {
+        localStorage.setItem("token", result.data.token);
         newUser.setToken(result.data.token);
       })
       .catch((err) => {
@@ -20,7 +21,9 @@ const LoginSeller = () => {
       });
   };
   return (
-    <div className="log">
+    <center>
+    <div className="logSeller">
+      <div className="innerSeller">
       <h2>login</h2>
       <input
         type="email"
@@ -44,6 +47,8 @@ const LoginSeller = () => {
         login
       </button>
     </div>
+    </div>
+    </center>
   );
 };
 

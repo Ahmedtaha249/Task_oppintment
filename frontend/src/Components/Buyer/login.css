@@ -1,0 +1,23 @@
+.log{
+    width:55rem;
+    height: 250px;
+     background-color:#EEEEEE;
+     margin-top: 200px;
+     box-shadow: 10px 10px 8px #888888;
+     border-radius: 4px;
+}
+.logInner{
+    display: inline-grid;
+    width: 45rem;
+}
+.logInner input{
+    margin-top: 10px;
+    padding:10px ;
+}
+.logInner button{
+    margin-top: 10px;
+    margin-bottom: 4px;
+    padding:10px;
+    border-radius: 4px;
+    font-weight: bold;
+}

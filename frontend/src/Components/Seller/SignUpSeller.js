@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
+import "./signUpSeller.css"
 const RegisterSeller = () => {
+  const history = useNavigate();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
 
@@ -25,7 +27,10 @@ const RegisterSeller = () => {
         setDone(
           <div className="succes">the seller has been added successfully</div>
         );
+
+        history("/loginSeller")
       })
+
       .catch((err) => {
         setDone(
           <div className="wrong">
@@ -36,7 +41,9 @@ const RegisterSeller = () => {
   };
 
   return (
-    <div className="Regis">
+    <center>
+    <div className="RegisSeller">
+      <div className="innerSeller">
       <h3>Register:</h3>
       <input
         type="text"
@@ -72,6 +79,7 @@ const RegisterSeller = () => {
         onChange={(e) => {
           setDescription(e.target.value);
         }}
+        placeholder="description here"
       />
       <input
         type="tel"
@@ -89,6 +97,8 @@ const RegisterSeller = () => {
       </button>
       {done}
     </div>
+    </div>
+    </center>
   );
 };
 export default RegisterSeller;
