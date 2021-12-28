@@ -49,3 +49,11 @@
         height: 300px;
         border-radius: 14px;
     }
+     .search input{
+      margin-top: 80px;
+      padding:10px;
+    } 
+   
+    .search button{
+      padding:10px;
+    }
